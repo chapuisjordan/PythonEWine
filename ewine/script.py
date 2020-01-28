@@ -3,6 +3,7 @@ import asyncio
 import datetime
 import random
 import websockets
+import json
 # some_file.py
 # import sys
 # # insert at 1, 0 is the script path (or '' in REPL)
@@ -13,7 +14,7 @@ from led import setup, loop, destroy
 connected = set()
 async def pub_sub(websocket, path):
     global connected
-    if path == '/broadcast/read' :        
+    if path == '/broadcast/read' :
         connected.add(websocket)
         print("READER "+str(websocket.remote_address)+"    connected")
         while True:
@@ -38,13 +39,14 @@ async def pub_sub(websocket, path):
 async def trigger_method(message):
     print(message)
     y = json.loads(message)
-    if y.method == "takeBottle" :
+    print(y["method"])
+    if y["method"] == "takeBottle" :
         import RPi.GPIO as GPIO
         import time
-        ledPin = y.ledPin
+#        ledPin = y.ledPin
         setup()
         loop()
-    if 
+#    if
 
 start_server = websockets.serve(pub_sub, '192.168.1.26', 5678)
 asyncio.get_event_loop().run_until_complete(start_server)
