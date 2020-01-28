@@ -15,8 +15,7 @@ DHTPin = 11     #define the pin of DHT11
 
 async def loop():
     dht = DHT.DHT(DHTPin)   #create a DHT class object
-    sumCnt = 0              #number of reading times 
-    value
+    sumCnt = 0              #number of reading times
     while(True):
         sumCnt += 1         #counting number of reading times
         chk = dht.readDHT11()     #read DHT11 and get a return value. Then determine whether data read is normal according to the return value.
@@ -30,18 +29,18 @@ async def loop():
         elif(chk is dht.DHTLIB_ERROR_TIMEOUT):  #reading DHT times out
             print("DHTLIB_ERROR_TIMEOUT!")
             value = "error"
-        else:             
+        else:
             print("error")
-            
+
         print("Humidity : %.2f, \t Temperature : %.2f \n"%(dht.humidity,dht.temperature))
+        print("value : ", value)
+        hello(value)
         time.sleep(60)
-        await hello(value)
 
 async def hello(value):
     async with websockets.connect('ws://192.168.1.26:5678/broadcast/temperature/write') as websocket:
         while True:
-            await websocket.send(value)
-asyncio.get_event_loop().run_until_complete(hello())    
+            websocket.send(value)
 
 if __name__ == '__main__':
     print ('Program is starting ... ')
@@ -49,5 +48,5 @@ if __name__ == '__main__':
         loop()
     except KeyboardInterrupt:
         GPIO.cleanup()
-        exit()  
+        exit()
 
