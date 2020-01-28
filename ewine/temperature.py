@@ -13,7 +13,7 @@ import websockets
 
 DHTPin = 11     #define the pin of DHT11
 
-def loop():
+async def loop():
     dht = DHT.DHT(DHTPin)   #create a DHT class object
     sumCnt = 0              #number of reading times 
     value
@@ -38,7 +38,7 @@ def loop():
         await hello(value)
 
 async def hello(value):
-    async with websockets.connect('ws://192.168.1.26:5678/broadcast/write') as websocket:
+    async with websockets.connect('ws://192.168.1.26:5678/broadcast/temperature/write') as websocket:
         while True:
             await websocket.send(value)
 asyncio.get_event_loop().run_until_complete(hello())    
