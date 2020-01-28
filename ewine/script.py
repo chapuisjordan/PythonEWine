@@ -3,6 +3,8 @@ import asyncio
 import datetime
 import random
 import websockets
+from Code.Python_Code.Blink import Blink
+
 connected = set()
 async def pub_sub(websocket, path):
     global connected
@@ -29,9 +31,8 @@ async def pub_sub(websocket, path):
             print("WRITER "+str(websocket.remote_address)+" disconnected")
 
 async def trigger_method(method):
-    if method == "led" :
-        print("allumer led")
-    if method == ""
+    if method == "takeBottle" :
+        Blink()
 
 start_server = websockets.serve(pub_sub, '127.0.0.1', 5678)
 asyncio.get_event_loop().run_until_complete(start_server)
