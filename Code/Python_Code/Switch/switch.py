@@ -1,18 +1,18 @@
-import RPi.GPIO as g
-from time import sleep
-from subprocess import Popen
+import time
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.IN)
+input = GPIO.input(20)
 
-g.setmode(g.BCM)
-g.setup(20,g.IN)
-
-def p26_callback(channel):
-  print ('ouverture')
-  sleep(1)
-  return
-
-g.add_event_detect(20, g.FALLING, callback=p26_callback)
-
-try:
-    print("try")
-finally:
-    g.cleanup()
+#initialise a previous input variable to 0 (assume button not pressed last)
+prev_input = 0
+while True:
+  #take a reading
+  input = GPIO.input(21)
+  #if the last reading was low and this one high, print
+  if ((not prev_input) and input):
+    print("Button pressed")
+  #update previous input
+  prev_input = input
+  #slight pause to debounce
+  time.sleep(0.05)
