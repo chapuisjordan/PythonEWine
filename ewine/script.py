@@ -46,7 +46,12 @@ async def trigger_method(message):
 #        ledPin = y.ledPin
         setup()
         loop()
+<<<<<<< Updated upstream
 #    if
+=======
+
+    if y.method
+>>>>>>> Stashed changes
 
 #start_server = websockets.serve(pub_sub, '127.0.0.1', 5678)
 start_server = websockets.serve(pub_sub, '192.168.1.27', 5678)
