@@ -8,7 +8,7 @@ import json
 # import sys
 # # insert at 1, 0 is the script path (or '' in REPL)
 # sys.path.insert(1, 'Freenove_RFID_Starter_Kit_for_Raspberry_Pi/Code/Python_Code/Blink')
-
+#import file
 from led import setup, loop, destroy
 
 connected = set()
@@ -24,7 +24,8 @@ async def pub_sub(websocket, path):
         try :
             while True:
                 data = await websocket.recv()
-                await trigger_method(data)
+                print(data)
+#                await trigger_method(data)
                 still_connected = set()
                 for ws in connected :
                     if ws.open:

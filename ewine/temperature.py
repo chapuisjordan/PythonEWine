@@ -37,24 +37,26 @@ async def loop():
         print("Humidity : %.2f, \t Temperature : %.2f \n"%(dht.humidity,dht.temperature))
         print("valueString : ", valueString)
         await hello(valueString)
-        time.sleep(60)
+#        asyncio.run(hello(valueString))
+        time.sleep(10)
 
 async def hello(value):
-    async with websockets.connect('ws://192.168.1.27:5678/broadcast/temperature/write') as websocket:
-        try:
-            resp = await websocket.recv()
-            while True:
-                await websocket.send(value)
-        except:
-            print('Reconnecting')
-            websocket = await websockets.connect('ws://192.168.1.27:5678/broadcast/temperature/write')
-            
+    print("In hello function")
+    async with websockets.connect('ws://192.168.1.27:5678/broadcast/write') as websocket:
+   #     try:
+#        resp = await websocket.recv()
+        await websocket.send(value)
+  #      except:
+ #           print('Reconnecting')
+#            websocket = await websockets.connect('ws://192.168.1.27/broadcast/write')
 
-if __name__ == '__main__':
-    print ('Program is starting ... ')
-    try:
-        asyncio.run(loop())
-    except KeyboardInterrupt:
-        GPIO.cleanup()
-        exit()
+asyncio.get_event_loop().run_until_complete(loop())
+
+#if __name__ == '__main__':
+#    print ('Program is starting ... ')
+#    try:
+#        asyncio.run(loop())
+#    except KeyboardInterrupt:
+#        GPIO.cleanup()
+#        exit()
 
