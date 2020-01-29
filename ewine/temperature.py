@@ -10,6 +10,7 @@ import time
 import Freenove_DHT as DHT
 import asyncio
 import websockets
+import json
 
 DHTPin = 11     #define the pin of DHT11
 
@@ -22,7 +23,8 @@ async def loop():
         print ("The sumCnt is : %d, \t chk    : %d"%(sumCnt,chk))
         if (chk is dht.DHTLIB_OK):      #read DHT11 and get a return value. Then determine whether data read is normal according to the return value.
             print("DHT11,OK!")
-            value = [dht.humidity, dht.temperature]
+            value = {"temperature": dht.temperature, "humidite": dht.humidity}
+            valueString = json.dumps(value)
         elif(chk is dht.DHTLIB_ERROR_CHECKSUM): #data check has errors
             print("DHTLIB_ERROR_CHECKSUM!!")
             value = "error"
