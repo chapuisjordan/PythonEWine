@@ -12,7 +12,7 @@ server.listen(0987, function() {
 });
  
 wsServer = new WebSocketServer({
-    httpServer: server,
+    httpServer: "192.168.1.17",
     // You should not use autoAcceptConnections for production
     // applications, as it defeats all standard cross-origin protection
     // facilities built into the protocol and the browser.  You should
