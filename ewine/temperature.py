@@ -41,8 +41,13 @@ async def loop():
 
 async def hello(value):
     async with websockets.connect('ws://192.168.1.27:5678/broadcast/temperature/write') as websocket:
-        while True:
-            await websocket.send(value)
+        try:
+            resp = await websocket.recv()
+            while True:
+                await websocket.send(value)
+        except:
+            print('Reconnecting')
+            websocket = await websockets.connect('ws://192.168.1.27:5678/broadcast/temperature/write')
 
 if __name__ == '__main__':
     print ('Program is starting ... ')
