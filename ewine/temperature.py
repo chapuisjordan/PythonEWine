@@ -27,16 +27,16 @@ async def loop():
             valueString = json.dumps(value)
         elif(chk is dht.DHTLIB_ERROR_CHECKSUM): #data check has errors
             print("DHTLIB_ERROR_CHECKSUM!!")
-            value = "error"
+            valueString = "error"
         elif(chk is dht.DHTLIB_ERROR_TIMEOUT):  #reading DHT times out
             print("DHTLIB_ERROR_TIMEOUT!")
-            value = "error"
+            valueString = "error"
         else:
             print("error")
 
         print("Humidity : %.2f, \t Temperature : %.2f \n"%(dht.humidity,dht.temperature))
-        print("value : ", value)
-        await hello(value)
+        print("valueString : ", valueString)
+        await hello(valueString)
         time.sleep(60)
 
 async def hello(value):
