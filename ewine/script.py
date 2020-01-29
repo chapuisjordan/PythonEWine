@@ -35,6 +35,22 @@ async def pub_sub(websocket, path):
                     connected=still_connected
         except:
             print("WRITER "+str(websocket.remote_address)+" disconnected")
+    elif path == '/broadcast/temperature/write' :
+        print("TEST")
+        try :
+            while True:
+                data = await websocket.recv()
+                await trigger_method(data)
+                still_connected = set()
+                for ws in connected :
+                    if ws.open:
+                        still_connected.add(ws)
+                        await asyncio.wait([ws.send(data)])
+                    else:
+                        print("READER "+str(ws.remote_address)+" disconnected")
+                    connected=still_connected
+        except:
+            print("WRITER "+str(websocket.remote_address)+" disconnected")
 
 async def trigger_method(message):
     print(message)

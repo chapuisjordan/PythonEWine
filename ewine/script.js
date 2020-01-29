@@ -4,7 +4,7 @@ const WebSocket = require('ws')
 
 // temperature[0].appendChild("test")
 // humidite.appendChild("testDeux")
-let socket = new WebSocket("ws://192.168.1.27:5678/broadcast/temperature/read");
+let socket = new WebSocket("ws://192.168.1.27:5678/broadcast/temperature/write");
 
 socket.onmessage = function (event) {
    console.log(event.data);
