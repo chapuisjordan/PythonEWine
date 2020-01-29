@@ -1,17 +1,17 @@
-const temperature = document.getElementsByClassName("temperature");
+// const temperature = document.getElementsByClassName("temperature");
 // const humidite = document.getElementsByClassName("humidite");
-
+const WebSocket = require('ws')
 
 // temperature[0].appendChild("test")
 // humidite.appendChild("testDeux")
-let socket = new WebSocket("wss://192.168.1.27:5678/broadcast/temperature/read");
+let socket = new WebSocket("ws://192.168.1.27:5678/broadcast/temperature/read");
 
-exampleSocket.onmessage = function (event) {
-    console.log(event.data);
+socket.onmessage = function (event) {
+   console.log(event.data);
 }
 
-window.onload = function(){
+//window.onload = function(){
     // your JS here
-    console.log(temperature[0])
-    temperature[0].append();
-}
+ //   console.log(temperature[0])
+ //   temperature[0].append();
+//}
