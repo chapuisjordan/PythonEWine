@@ -48,6 +48,7 @@ async def hello(value):
         except:
             print('Reconnecting')
             websocket = await websockets.connect('ws://192.168.1.27:5678/broadcast/temperature/write')
+            
 
 if __name__ == '__main__':
     print ('Program is starting ... ')
