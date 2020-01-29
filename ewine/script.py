@@ -37,7 +37,7 @@ async def pub_sub(websocket, path):
         except:
             print("WRITER "+str(websocket.remote_address)+" disconnected")
     elif path == '/broadcast/temperature/write' :
-        print("TEST")
+        print("TEST "+str(websocket.remote_address)+"    connected")
         try :
             while True:
                 data = await websocket.recv()

@@ -1,6 +1,6 @@
 // const temperature = document.getElementsByClassName("temperature");
 // const humidite = document.getElementsByClassName("humidite");
-const WebSocket = require('ws')
+// const WebSocket = require('ws')
 
 // temperature[0].appendChild("test")
 // humidite.appendChild("testDeux")
