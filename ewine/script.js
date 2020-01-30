@@ -2,7 +2,7 @@ var WebSocketServer = require("ws").Server;
 var ws = new WebSocketServer( { port: 8100 } );
 
 console.log("Server started...");
-
+console.log("ws : ", ws)
 ws.on('connection', function (ws) {
   console.log("Browser connected online...")
    
