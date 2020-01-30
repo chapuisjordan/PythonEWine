@@ -53,6 +53,11 @@ async def pub_sub(websocket, path):
                     connected=still_connected
         except:
             print("WRITER "+str(websocket.remote_address)+" disconnected")
+    elif path == '/broadcast/temperature/read' :
+        connected.add(websocket)
+        print("Voici la température actuelle"+str(websocket.remote_address)+"    connected")
+        while True:
+            await asyncio.sleep(100)
 
 async def trigger_method(message):
     print(message)
