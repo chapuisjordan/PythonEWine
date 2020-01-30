@@ -37,16 +37,12 @@ async def loop():
         print("Humidity : %.2f, \t Temperature : %.2f \n"%(dht.humidity,dht.temperature))
         print("valueString : ", valueString)
         await hello(valueString)
-<<<<<<< Updated upstream
 #        asyncio.run(hello(valueString))
         time.sleep(10)
-=======
-        time.sleep(1)
->>>>>>> Stashed changes
 
 async def hello(value):
     print("In hello function")
-    async with websockets.connect('ws://192.168.1.28:5678/broadcast/temperature/write') as websocket:
+    async with websockets.connect('ws://192.168.1.28:5678/broadcast/temperature/read') as websocket:
    #     try:
 #        resp = await websocket.recv()
         await websocket.send(value)
