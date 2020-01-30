@@ -1,8 +1,7 @@
-// const WebSocket = require('ws');
+var express = require('express');
+var app = express();
 
-let socket = new WebSocket("ws://192.168.1.28:5678/broadcast/temperature/read");
-console.log('test')
-socket.onmessage = function (event) {
-	console.log('test')
-	console.log(event.data)
-}
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/', function(req, res) {
+  res.send('hello world');
+});
