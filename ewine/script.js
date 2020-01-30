@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 var WebSocketServer = require("ws").Server;
 var ws = new WebSocketServer( { port: 8100 } );
 
@@ -22,6 +23,15 @@ ws.on('connection', function (ws) {
          break;
       }   
     })
+=======
+// const temperature = document.getElementsByClassName("temperature");
+// const humidite = document.getElementsByClassName("humidite");
+// const WebSocket = require('ws')
+
+// temperature[0].appendChild("test")
+// humidite.appendChild("testDeux")
+let socket = new WebSocket("ws://192.168.1.27:5678/broadcast/write");
+>>>>>>> Stashed changes
 
     ws.on("close", function() {
         console.log("Browser gone.")

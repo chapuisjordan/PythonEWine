@@ -37,8 +37,12 @@ async def loop():
         print("Humidity : %.2f, \t Temperature : %.2f \n"%(dht.humidity,dht.temperature))
         print("valueString : ", valueString)
         await hello(valueString)
+<<<<<<< Updated upstream
 #        asyncio.run(hello(valueString))
         time.sleep(10)
+=======
+        time.sleep(1)
+>>>>>>> Stashed changes
 
 async def hello(value):
     print("In hello function")
