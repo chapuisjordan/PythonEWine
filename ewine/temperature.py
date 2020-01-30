@@ -42,13 +42,13 @@ async def loop():
 
 async def hello(value):
     print("In hello function")
-    async with websockets.connect('ws://192.168.1.27:5678/broadcast/temperature/write') as websocket:
+    async with websockets.connect('ws://192.168.1.28:5678/broadcast/temperature/write') as websocket:
    #     try:
 #        resp = await websocket.recv()
         await websocket.send(value)
   #      except:
  #           print('Reconnecting')
-#            websocket = await websockets.connect('ws://192.168.1.27/broadcast/write')
+#            websocket = await websockets.connect('ws://192.168.1.28/broadcast/write')
 
 asyncio.get_event_loop().run_until_complete(loop())
 
