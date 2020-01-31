@@ -31,6 +31,6 @@ async def pub_sub(websocket, path):
         except:
             print("WRITER "+str(websocket.remote_address)+" disconnected")
              
-start_server = websockets.serve(pub_sub, '192.168.1.28', 5678) 
+start_server = websockets.serve(pub_sub, '127.0.0.1', 5678) 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

@@ -1,7 +1,7 @@
 import asyncio
 import websockets
 async def hello():
-    async with websockets.connect('ws://192.168.1.28:5678/broadcast/temperature/write') as websocket:
+    async with websockets.connect('ws://127.0.0.1:5678/broadcast/temperature/write') as websocket:
         while True:
             name = input("Message ? ")
             await websocket.send(name)

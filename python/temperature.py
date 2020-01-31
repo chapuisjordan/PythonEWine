@@ -42,7 +42,7 @@ async def loop():
 
 async def hello(value):
     print("In hello function")
-    async with websockets.connect('ws://192.168.1.28:5678/broadcast/temperature/write') as websocket:
+    async with websockets.connect('ws://127.0.0.1:5678/broadcast/temperature/write') as websocket:
    #     try:
 #        resp = await websocket.recv()
         await websocket.send(value)
