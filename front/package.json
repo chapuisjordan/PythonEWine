@@ -2,7 +2,7 @@
   "name": "ewine",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "app.js",
   "dependencies": {
     "express": "^4.17.1",
     "path": "^0.12.7",
