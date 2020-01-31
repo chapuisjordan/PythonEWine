@@ -1,0 +1,18 @@
+{
+  "name": "ewine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "websocket": "^1.0.31",
+    "ws": "^7.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

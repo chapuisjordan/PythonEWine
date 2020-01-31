@@ -1,0 +1,10 @@
+header{
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+}
+
+.bottle-confirmation{
+    margin: auto;
+}
