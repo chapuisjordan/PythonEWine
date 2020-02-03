@@ -7,12 +7,19 @@
 ########################################################################
 import RPi.GPIO as GPIO
 import time
+import json
+
 
 #trigPin = 16 --> GPIO 23
 #echoPin = 18 --> GPIO 24
 
-trigPin = 36
-echoPin = 38
+result = "{ letPin: 36, trigPin: 38 }"
+
+sonar = json.loads(result)
+
+trigPin = sonar['letPin']
+echoPin = sonar['trigPin']
+
 
 MAX_DISTANCE = 220          # define the maximum measuring distance, unit: cm
 timeOut = MAX_DISTANCE*60   # calculate timeout according to the maximum measuring distance
