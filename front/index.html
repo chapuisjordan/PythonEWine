@@ -14,6 +14,9 @@
         <h1>e-Wine</h1>
         <p class="temperature"></p>
         <p class="humidite"></p>
+	<button onclick="addBottle()">Ajouter une bouteille</button>
+	<button onclick="validAddBottle()">Valider</button>
+	<button onclick="getBottles()">Récupérer une bouteille</button>
     </header>
 
     <main>
@@ -21,27 +24,7 @@
     </main>
 
     <footer>
-
     </footer>
 </body>
 </html>
-<!-- <!DOCTYPE html>
-<html>
-    <head>
-        <title>WebSocket demo</title>
-    </head>
-    <body>
-        <script>
-            var ws = new WebSocket("ws://192.168.1.28:5678/broadcast/temperature/read"),
-                messages = document.createElement('ul');
-            ws.onmessage = function (event) {
-                var messages = document.getElementsByTagName('ul')[0],
-                    message = document.createElement('li'),
-                    content = document.createTextNode(event.data);
-                message.appendChild(content);
-                messages.appendChild(message);
-            };
-            document.body.appendChild(messages);
-        </script>
-    </body>
-</html> -->
+<!-- Raspberry sucks-->
