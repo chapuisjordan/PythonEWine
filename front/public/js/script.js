@@ -3,7 +3,7 @@ console.log('wss : ', wss);
 wss.onmessage = function (event) {
 	console.log('event : ', event.data)
 };
-
+ 
 let place_free = {}
 async function addBottle(){
 	console.log('add bottle');
