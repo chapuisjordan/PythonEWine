@@ -10,6 +10,7 @@ import time
 import json
 import websockets
 
+
 #trigPin = 16 --> GPIO 23
 #echoPin = 18 --> GPIO 24
 
