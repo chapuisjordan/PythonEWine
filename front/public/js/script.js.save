@@ -1,0 +1,25 @@
+const wss = new WebSocket("wss://existenz.fr.nf:3000/node/temperature");
+console.log('ok');
+wss.onmessage = function (event) {
+	console.log('event : ', event.data)
+};
+
+async function addBottle(){
+	console.log('add bottle');
+	const response = await fetch('https://existenz.fr.nf/cellars/1', {
+		method: 'get',
+	})
+	const resp = JSON.parse(await response.text());
+	// console.log(JSON.parse(await response.text()));
+	const result = JSON.parse(resp.bottle_box);
+	getEmptyPlace(result);
+}
+
+function getEmptyPlace(array){
+	while(element => {
+		if(element.bottle === null){
+			console.log(element)
+			return;
+		}
+	});
+}

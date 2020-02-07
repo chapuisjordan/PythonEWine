@@ -23,17 +23,16 @@ async def loop():
         print ("The sumCnt is : %d, \t chk    : %d"%(sumCnt,chk))
         if (chk is dht.DHTLIB_OK):      #read DHT11 and get a return value. Then determine whether data read is normal according to the return value.
             print("DHT11,OK!")
-            value = {"temperature": dht.temperature, "humidite": dht.humidity}
-            valueString = json.dumps(value)
+            value = {"methodPath": "/node/temperature", "temperature": dht.temperature, "humidite": dht.humidity}
         elif(chk is dht.DHTLIB_ERROR_CHECKSUM): #data check has errors
             print("DHTLIB_ERROR_CHECKSUM!!")
-            valueString = "error"
+            value = {"methodPath": "/node/temperature", "temperature": "error", "humidite": "error"}
         elif(chk is dht.DHTLIB_ERROR_TIMEOUT):  #reading DHT times out
             print("DHTLIB_ERROR_TIMEOUT!")
-            valueString = "error"
+            value = {"methodPath": "/node/temperature", "temperature": "error", "humidite": "error"}
         else:
             print("error")
-
+        valueString = json.dumps(value)
         print("Humidity : %.2f, \t Temperature : %.2f \n"%(dht.humidity,dht.temperature))
         print("valueString : ", valueString)
         await hello(valueString)
@@ -42,7 +41,7 @@ async def loop():
 
 async def hello(value):
     print("In hello function")
-    async with websockets.connect('ws://127.0.0.1:5678/broadcast/temperature/write') as websocket:
+    async with websockets.connect('wss://existenz.fr.nf:3000/node') as websocket:
    #     try:
 #        resp = await websocket.recv()
         await websocket.send(value)
@@ -59,4 +58,5 @@ asyncio.get_event_loop().run_until_complete(loop())
 #    except KeyboardInterrupt:
 #        GPIO.cleanup()
 #        exit()
+
 
