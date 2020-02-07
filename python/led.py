@@ -9,17 +9,19 @@ import RPi.GPIO as GPIO
 import time
 
 #ledPin = 33    # LedPin for GPIO 13
-ledPin = 31 # LedPin for GPIO 17
+#ledPin = 31 # LedPin for GPIO 17
 #ledPin = 35 # LedPin for GPIO 19
 #ledPin = 40
 
-def setup():
+
+def setup(ledPin):
     GPIO.setmode(GPIO.BOARD)       # use PHYSICAL GPIO Numbering
     GPIO.setup(ledPin, GPIO.OUT)   # set the ledPin to OUTPUT mode
     GPIO.output(ledPin, GPIO.LOW)  # make ledPin output LOW level 
     print ('using pin%d'%ledPin)
 
-def loop():
+
+def loop(ledPin):
     while True:
         GPIO.output(ledPin, GPIO.HIGH)  # make ledPin output HIGH level to turn on led
         print ('led turned on >>>')     # print information on terminal
@@ -28,8 +30,10 @@ def loop():
         print ('led turned off <<<')
         time.sleep(1)                   # Wait for 1 second
 
-def destroy():
+
+def destroy(ledPin):
     GPIO.cleanup()                      # Release all GPIO
+
 
 if __name__ == '__main__':    # Program entrance
     print ('Program is starting ... \n')
