@@ -13,6 +13,9 @@ import time
 #ledPin = 35 # LedPin for GPIO 19
 #ledPin = 4
 
+def cleanupGpio():
+    GPIO.cleanup()
+
 def setup(ledPin):
     GPIO.setmode(GPIO.BOARD)       # use PHYSICAL GPIO Numbering
     GPIO.setup(ledPin, GPIO.OUT)   # set the ledPin to OUTPUT mode

@@ -8,10 +8,18 @@
     <script src="js/script.js"></script>
     <title>E-Wine</title>
 </head>
-<body>    
-    <main class="homescreen">
+<body>
+    <header>
+        <h1>e-Wine température</h1>
+        <p class="temperature"></p>
+        <p class="humidite"></p>
+	<button onclick="addBottle()">Ajouter une bouteille</button>
+	<button onclick="validAddBottle()">Valider</button>
+	<button onclick="getBottles()">Récupérer une bouteille</button>
+    </header>
+
+    <main>
         <p class="bottle-confirmation"></p>
-        <p><a href="/cellar" id="linkToCellar">Ma cave</a></p>
     </main>
 
     <footer>

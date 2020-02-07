@@ -4,8 +4,14 @@ var path = require('path');
 var io = require('socket.io');
 app.use(express.static(__dirname + '/public'));
 // respond with "hello world" when a GET request is made to the homepage
-app.get('/temperature', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
+});
+app.get('/temperature', function(req, res) {
+  res.sendFile(path.join(__dirname + '/temp.html'));
+});
+app.get('/cellar', function(req, res) {
+  res.sendFile(path.join(__dirname + '/cellar.html'));
 });
 
 // définir le port d'écoute
